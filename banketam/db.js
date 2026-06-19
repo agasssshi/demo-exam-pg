@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const pool = new Pool({
     host: 'localhost',
     user: 'postgres',
-    password: 'password',
+    password: 'postgres',
     database: 'banketam',
     port: 5432,
     max: 5
