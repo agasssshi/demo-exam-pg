@@ -1,0 +1,199 @@
+snippet adminhtml1 "HTML structure" wA
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Банкетам.Нет — Админ</h1>
+            <nav><button id="logoutBtn">Выйти</button></nav>
+        </header>
+        <h2>Все заявки</h2>
+        <div class="filters">
+            <label>Фильтр по статусу:</label>
+            <select id="statusFilter">
+                <option value="all">Все</option>
+                <option value="new">Новая</option>
+                <option value="assigned">Банкет назначен</option>
+                <option value="completed">Банкет завершен</option>
+            </select>
+            <button id="applyFilter">Применить</button>
+        </div>
+        <div id="adminBookingsList"></div>
+        <div class="pagination">
+            <button id="prevPage">←</button>
+            <span id="pageInfo">Страница 1</span>
+            <button id="nextPage">→</button>
+        </div>
+        <div id="errorMsg" class="error"></div>
+    </div>
+    <script src="/js/common.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>
+endsnippet;
+snippet dashboardhtml1 "HTML structure" wA
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои бронирования</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Банкетам.Нет</h1>
+            <nav>
+                <span id="userName"></span>
+                <a href="/new-booking.html">Новая заявка</a>
+                <button id="logoutBtn">Выйти</button>
+            </nav>
+        </header>
+        <h2>Мои бронирования</h2>
+        <!-- Слайдер -->
+        <div class="slider">
+            <div class="slides">
+                <img src="https://via.placeholder.com/390x200?text=Зал" alt="Зал">
+                <img src="https://via.placeholder.com/390x200?text=Ресторан" alt="Ресторан">
+                <img src="https://via.placeholder.com/390x200?text=Летняя+веранда" alt="Летняя веранда">
+                <img src="https://via.placeholder.com/390x200?text=Закрытая+веранда" alt="Закрытая веранда">
+            </div>
+            <button class="prev">❮</button>
+            <button class="next">❯</button>
+        </div>
+        <div id="bookingsList"></div>
+        <div id="errorMsg" class="error"></div>
+    </div>
+    <script src="/js/common.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>
+endsnippet;
+snippet indexhtml1 "HTML structure" wA
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Банкетам.Нет</title></head>
+<body>
+<script>
+    fetch('/api/me')
+        .then(res => res.json())
+        .then(data => {
+            if (data.user) {
+                if (data.user.role === 'admin') location.href = '/admin.html';
+                else location.href = '/dashboard.html';
+            } else {
+                location.href = '/login.html';
+            }
+        })
+        .catch(() => location.href = '/login.html');
+</script>
+</body>
+</html>
+endsnippet;
+snippet loginhtml1 "HTML structure" wA
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Вход</h1>
+        <form id="loginForm">
+            <label>Логин</label>
+            <input type="text" id="login" required>
+            <label>Пароль</label>
+            <input type="password" id="password" required>
+            <div id="errorMsg" class="error"></div>
+            <button type="submit">Войти</button>
+        </form>
+        <p>Ещё не зарегистрированы? <a href="/register.html">Регистрация</a></p>
+    </div>
+    <script src="/js/auth.js"></script>
+</body>
+</html>
+endsnippet;
+snippet new-bookinghtml1 "HTML structure" wA
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новая заявка</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Банкетам.Нет</h1>
+            <nav><a href="/dashboard.html">← Назад</a></nav>
+        </header>
+        <h2>Новая заявка на бронирование</h2>
+        <form id="newBookingForm">
+            <label>Помещение</label>
+            <select id="hall" required>
+                <option value="">Выберите помещение</option>
+                <option value="Зал">Зал</option>
+                <option value="Ресторан">Ресторан</option>
+                <option value="Летняя веранда">Летняя веранда</option>
+                <option value="Закрытая веранда">Закрытая веранда</option>
+            </select>
+            <label>Дата начала (ДД.ММ.ГГГГ)</label>
+            <input type="text" id="start_date" placeholder="31.12.2025" required>
+            <label>Способ оплаты</label>
+            <select id="payment_method" required>
+                <option value="">Выберите</option>
+                <option value="cash">Наличные</option>
+                <option value="transfer">Перевод по номеру телефона</option>
+            </select>
+            <div id="errorMsg" class="error"></div>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+    <script src="/js/common.js"></script>
+    <script src="/js/new-booking.js"></script>
+</body>
+</html>
+endsnippet;
+snippet registerhtml1 "HTML structure" wA
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Регистрация</h1>
+        <form id="registerForm">
+            <label>Логин (латиница+цифры, ≥6)</label>
+            <input type="text" id="login" required>
+            <label>Пароль (≥8 символов)</label>
+            <input type="password" id="password" required>
+            <label>ФИО (кириллица)</label>
+            <input type="text" id="full_name" required>
+            <label>Телефон (8(XXX)XXX-XX-XX)</label>
+            <input type="text" id="phone" placeholder="8(999)123-45-67" required>
+            <label>Email</label>
+            <input type="email" id="email" required>
+            <div id="errorMsg" class="error"></div>
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+        <p>Уже есть аккаунт? <a href="/login.html">Войти</a></p>
+    </div>
+    <script src="/js/auth.js"></script>
+</body>
+</html>
+endsnippet;
