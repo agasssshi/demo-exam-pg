@@ -1,0 +1,30 @@
+-- Создаём базу данных (если не создана)
+-- CREATE DATABASE banketam;
+-- \c banketam;
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    login VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    role VARCHAR(10) DEFAULT 'user' CHECK (role IN ('user', 'admin')),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE bookings (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    hall VARCHAR(50) NOT NULL,
+    start_date DATE NOT NULL,
+    payment_method VARCHAR(10) NOT NULL CHECK (payment_method IN ('cash', 'transfer')),
+    status VARCHAR(20) DEFAULT 'new' CHECK (status IN ('new', 'assigned', 'completed')),
+    review TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Администратор: логин Admin26, пароль Demo20
+-- Хеш для 'Demo20' (сгенерирован bcrypt)
+INSERT INTO users (login, password, full_name, phone, email, role)
+VALUES ('Admin26', '$2b$10$q1Q2R3S4T5U6V7W8X9Y0ZaBcDeFgHiJkLmNoPqRsTuVwXyZ', 'Администратор', '8(999)999-99-99', 'admin@banketam.ru', 'admin');

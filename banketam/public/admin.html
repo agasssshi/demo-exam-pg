@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Банкетам.Нет — Админ</h1>
+            <nav><button id="logoutBtn">Выйти</button></nav>
+        </header>
+        <h2>Все заявки</h2>
+        <div class="filters">
+            <label>Фильтр по статусу:</label>
+            <select id="statusFilter">
+                <option value="all">Все</option>
+                <option value="new">Новая</option>
+                <option value="assigned">Банкет назначен</option>
+                <option value="completed">Банкет завершен</option>
+            </select>
+            <button id="applyFilter">Применить</button>
+        </div>
+        <div id="adminBookingsList"></div>
+        <div class="pagination">
+            <button id="prevPage">←</button>
+            <span id="pageInfo">Страница 1</span>
+            <button id="nextPage">→</button>
+        </div>
+        <div id="errorMsg" class="error"></div>
+    </div>
+    <script src="/js/common.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

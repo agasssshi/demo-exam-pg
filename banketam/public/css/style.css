@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    padding: 20px;
+}
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+nav a, nav button {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #007bff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1em;
+}
+nav button:hover, nav a:hover { text-decoration: underline; }
+h1, h2 { margin-bottom: 15px; }
+label { display: block; margin-top: 10px; font-weight: bold; }
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+}
+button:hover { background: #0056b3; }
+.error { color: red; margin-top: 10px; }
+.success { color: green; margin-top: 10px; }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th { background: #f2f2f2; }
+
+/* Слайдер */
+.slider {
+    position: relative;
+    max-width: 100%;
+    margin: 20px 0;
+    overflow: hidden;
+}
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+.slides img {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+.slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+    width: auto;
+    margin: 0;
+}
+.slider button:hover {
+    background: rgba(0,0,0,0.8);
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Фильтры и пагинация */
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+.filters label { margin: 0; }
+.filters select, .filters button {
+    width: auto;
+    margin: 0;
+}
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+.pagination button {
+    width: auto;
+    padding: 8px 16px;
+    margin: 0;
+}

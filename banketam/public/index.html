@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Банкетам.Нет</title></head>
+<body>
+<script>
+    fetch('/api/me')
+        .then(res => res.json())
+        .then(data => {
+            if (data.user) {
+                if (data.user.role === 'admin') location.href = '/admin.html';
+                else location.href = '/dashboard.html';
+            } else {
+                location.href = '/login.html';
+            }
+        })
+        .catch(() => location.href = '/login.html');
+</script>
+</body>
+</html>

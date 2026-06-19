@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новая заявка</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Банкетам.Нет</h1>
+            <nav><a href="/dashboard.html">← Назад</a></nav>
+        </header>
+        <h2>Новая заявка на бронирование</h2>
+        <form id="newBookingForm">
+            <label>Помещение</label>
+            <select id="hall" required>
+                <option value="">Выберите помещение</option>
+                <option value="Зал">Зал</option>
+                <option value="Ресторан">Ресторан</option>
+                <option value="Летняя веранда">Летняя веранда</option>
+                <option value="Закрытая веранда">Закрытая веранда</option>
+            </select>
+            <label>Дата начала (ДД.ММ.ГГГГ)</label>
+            <input type="text" id="start_date" placeholder="31.12.2025" required>
+            <label>Способ оплаты</label>
+            <select id="payment_method" required>
+                <option value="">Выберите</option>
+                <option value="cash">Наличные</option>
+                <option value="transfer">Перевод по номеру телефона</option>
+            </select>
+            <div id="errorMsg" class="error"></div>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+    <script src="/js/common.js"></script>
+    <script src="/js/new-booking.js"></script>
+</body>
+</html>

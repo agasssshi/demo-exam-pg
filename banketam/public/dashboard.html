@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои бронирования</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Банкетам.Нет</h1>
+            <nav>
+                <span id="userName"></span>
+                <a href="/new-booking.html">Новая заявка</a>
+                <button id="logoutBtn">Выйти</button>
+            </nav>
+        </header>
+        <h2>Мои бронирования</h2>
+        <!-- Слайдер -->
+        <div class="slider">
+            <div class="slides">
+                <img src="https://via.placeholder.com/390x200?text=Зал" alt="Зал">
+                <img src="https://via.placeholder.com/390x200?text=Ресторан" alt="Ресторан">
+                <img src="https://via.placeholder.com/390x200?text=Летняя+веранда" alt="Летняя веранда">
+                <img src="https://via.placeholder.com/390x200?text=Закрытая+веранда" alt="Закрытая веранда">
+            </div>
+            <button class="prev">❮</button>
+            <button class="next">❯</button>
+        </div>
+        <div id="bookingsList"></div>
+        <div id="errorMsg" class="error"></div>
+    </div>
+    <script src="/js/common.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>
