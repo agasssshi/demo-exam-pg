@@ -52,4 +52,21 @@ CREATE TABLE bookings (
 -- Хеш для 'Demo20' (сгенерирован bcrypt)
 INSERT INTO users (login, password, full_name, phone, email, role)
 VALUES ('Admin26', '$2b$10$q1Q2R3S4T5U6V7W8X9Y0ZaBcDeFgHiJkLmNoPqRsTuVwXyZ', 'Администратор', '8(999)999-99-99', 'admin@banketam.ru', 'admin');
+endsnippet;
+snippet json1 "HTML structure" wA
+{
+  "name": "banketam",
+  "version": "1.0.0",
+  "description": "Портал бронирования банкетных залов",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "pg": "^8.11.3"
+  }
+}
 endsnippet

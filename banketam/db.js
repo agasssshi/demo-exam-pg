@@ -99,3 +99,4 @@ module.exports = {
     findBookingById,
     bcrypt
 };
+
